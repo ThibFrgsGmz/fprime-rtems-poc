@@ -7,6 +7,7 @@ artifacts
 swil-venv*
 swil/report.html
 swil/*robot*.xml
+*log.html*
 # Prerequisites
 *.d
 

@@ -8,6 +8,7 @@ swil-venv*
 swil/report.html
 swil/*robot*.xml
 *log.html*
+App/build-*
 # Prerequisites
 *.d
 

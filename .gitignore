@@ -9,6 +9,8 @@ swil/report.html
 swil/*robot*.xml
 *log.html*
 App/build-*
+*.log
+*.save
 # Prerequisites
 *.d
 

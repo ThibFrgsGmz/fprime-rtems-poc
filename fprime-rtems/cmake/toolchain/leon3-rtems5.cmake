@@ -42,12 +42,23 @@ set(BSP_FLAG "-qbsp=leon3")
 set(ISA_FLAG "-mcpu=leon3")
 set(COMMON_FLAGS "-g -msoft-float ${ISA_FLAG} ${BSP_FLAG} -mflat")
 
-set(C_FLAGS "")
-set(CXX_FLAGS "")
-set(ASM_FLAGS "")
-set(LD_FLAGS "")
-
 set(DEF_FLAGS "")
+set(C_CXX_FLAGS "-Os")  
+
+set(C_FLAGS "")
+set(CXX_FLAGS "-fno-exceptions \
+    -fno-rtti \
+    -ffunction-sections \
+    -fdata-sections \
+    -fcheck-new \
+    -fno-rtti \
+    -Wnon-virtual-dtor \
+    -fno-unroll-loops \
+    -fno-jump-tables")
+set(ASM_FLAGS "-x assembler-with-cpp")
+set(LD_FLAGS "-fno-jump-tables -flto -Wl,--gc-sections")
+# Following NOT WORKING : profile count data file not found [-Wmissing-profile]
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-generate -fprofile-use")
 
 set(CMAKE_C_FLAGS           "${COMMON_FLAGS} ${C_FLAGS} ${DEF_FLAGS}")
 set(CMAKE_CXX_FLAGS         "${COMMON_FLAGS} ${CXX_FLAGS} ${DEF_FLAGS}")

@@ -8,17 +8,24 @@
 #         )
 
 # set(SOURCE_FILES
-#       "Event.cpp"
-#       "InterruptLock.cpp"
-#       "Log.cpp"
-#       "Mutex.cpp"
-#       "Queue.cpp"
-#       "TaskCommon.cpp"
-#       "TaskId.cpp"
-#       "TaskLock.cpp"
-#       "WatchdogTimerCommon.cpp"
-#       "${FPRIME_FRAMEWORK_PATH}/Os/Posix/IntervalTimer.cpp"
+#     "Event.cpp"
+#     "InterruptLock.cpp"
+#     "Log.cpp"
+#     "Mutex.cpp"
+#     "Queue.cpp"
+#     "Task.cpp"
+#     "TaskId.cpp"
+#     "TaskLock.cpp"
+#     "WatchdogTimerCommon.cpp"
+#     "${FPRIME_FRAMEWORK_PATH}/Os/Posix/IntervalTimer.cpp"
 #     )
+
+set(SOURCE_FILES
+    "Mutex.cpp"
+    "Queue.cpp"
+    "Task.cpp"
+    "TaskId.cpp"
+    )
 
 if(CMAKE_SYSTEM_VERSION MATCHES 4.[789])
 #   list(APPEND SOURCE_FILES
@@ -34,4 +41,4 @@ elseif(CMAKE_SYSTEM_VERSION MATCHES 5.[0-9])
     message(SYSTEM VERSION ==== > 5.x)
 endif()
 
-# register_fprime_module()
+register_fprime_module()

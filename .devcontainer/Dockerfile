@@ -8,6 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-server \
     curl \
+    wget \
     gnupg \
     git \
     build-essential \
@@ -24,3 +25,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && python3 -m pip install -U --upgrade pip setuptools setuptools_scm wheel \
     && printf '\n[ -d "%s" ] && . %s/bin/activate\n' /tmp/fprime-venv /tmp/fprime-venv >> ~/.bashrc \
     && echo 'eval "$(register-python-argcomplete fprime-cli)"' >> ~/.bashrc
+
+# Install Renode
+ARG RENODE_PKG= https://github.com/renode/renode/releases/download/v1.13.3/renode-1.13.3.linux-portable.tar.gz
+RUN wget $RENODE_PKG \
+      tar -xvzf renode-1.13.3.linux-portable.tar.gz
+    
+ENV RENODE_INSTALL_DIR=/workspaces/renode
+ENV PATH=${RENODE_INSTALL_DIR}:${PATH}

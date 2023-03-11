@@ -1,25 +1,3 @@
-
-# set(MOD_DEPS
-#         "${CMAKE_THREAD_LIBS_INIT}"
-#         Fw/Cfg
-#         Fw/Types
-#         Fw/Logger
-#         Utils/Hash
-#         )
-
-# set(SOURCE_FILES
-#     "Event.cpp"
-#     "InterruptLock.cpp"
-#     "Log.cpp"
-#     "Mutex.cpp"
-#     "Queue.cpp"
-#     "Task.cpp"
-#     "TaskId.cpp"
-#     "TaskLock.cpp"
-#     "WatchdogTimerCommon.cpp"
-#     "${FPRIME_FRAMEWORK_PATH}/Os/Posix/IntervalTimer.cpp"
-#     )
-
 set(SOURCE_FILES
     "Mutex.cpp"
     "Queue.cpp"
@@ -41,4 +19,8 @@ elseif(CMAKE_SYSTEM_VERSION MATCHES 5.[0-9])
     message(SYSTEM VERSION ==== > 5.x)
 endif()
 
-register_fprime_module()
+set(MOD_DEPS
+    Os
+)
+
+register_fprime_module(fprime-rtems_rtems)

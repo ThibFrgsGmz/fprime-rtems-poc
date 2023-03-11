@@ -1,5 +1,8 @@
 :name: Leon3 rtems demo
 :description: This script runs the rtems shell demo on Leon3
+: Run
+:renode -P 1234 --disable-xwt --console
+:include @swil/leon3_rtems.resc
 
 using sysbus
 $name?="Leon3"
@@ -23,3 +26,5 @@ macro reset
 """
 
 runMacro $reset
+
+:start

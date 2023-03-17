@@ -19,6 +19,21 @@ elseif(CMAKE_SYSTEM_VERSION MATCHES 5.[0-9])
     message(SYSTEM VERSION ==== > 5.x)
 endif()
 
+# Basic source files used in every OSAL layer.  Contains common code and helpers.
+set(SOURCE_FILES
+    "${FPRIME_FRAMEWORK_PATH}/Os/IntervalTimerCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/TaskString.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/TaskCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/QueueCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/QueueString.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/IPCQueueCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/SimpleQueueRegistry.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/MemCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/ValidateFileCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/ValidatedFile.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/FileCommon.cpp"
+)
+
 set(MOD_DEPS
     Os
 )

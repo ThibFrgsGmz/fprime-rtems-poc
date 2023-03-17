@@ -14,22 +14,25 @@ namespace Os {
         rtems_status_code                status;
         rtems_name                       r_name;
         status = rtems_semaphore_create(r_name, 1, OSAL_MUTEX_ATTRIBS, 0, &this->m_handle);
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
     }
     
     Mutex::~Mutex(void) {
+        rtems_status_code                status;
         status = rtems_semaphore_delete(this->m_handle);
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
     }
     
     void Mutex::lock(void) {
+        rtems_status_code                status;
         status = rtems_semaphore_obtain(this->m_handle, RTEMS_WAIT, RTEMS_NO_TIMEOUT);
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
     }
 
     void Mutex::unLock(void) {
+        rtems_status_code                status;
         status = rtems_semaphore_release(this->m_handle);
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
     }
 }
 

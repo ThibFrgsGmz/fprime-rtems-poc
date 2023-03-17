@@ -6,7 +6,7 @@ namespace Os
 {
     TaskId::TaskId(void)
     {
-        id = taskIdSelf();
+        id = rtems_task_self();
     }
     TaskId::~TaskId(void)
     {

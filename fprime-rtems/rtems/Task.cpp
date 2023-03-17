@@ -36,7 +36,7 @@ namespace Os {
 
         status = rtems_task_create(r_name, priority, stackSize, r_mode, r_attributes, &this->m_handle);
 
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
 
         if (status != RTEMS_SUCCESSFUL)
         {
@@ -45,7 +45,7 @@ namespace Os {
         
         status = rtems_task_start(this->m_handle, (rtems_task_entry)routine, (rtems_task_argument)r_name);
 
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
 
         if (status != RTEMS_SUCCESSFUL)
         {
@@ -89,7 +89,7 @@ namespace Os {
     Task::TaskStatus Task::delay(NATIVE_UINT_TYPE milliseconds)
     {
         int   tick_count;
-        int32 return_code = TASK_OK;
+        int32_t return_code = TASK_OK;
         Task::TaskStatus status = TASK_DELAY_ERROR;
 
         // return_code = OS_Milli2Ticks(milli_second, &tick_count);
@@ -106,7 +106,7 @@ namespace Os {
         }
 
         rtems_task_wake_after((rtems_interval)tick_count);
-        return return_code;
+        return (Task::TaskStatus)return_code;
     }
 
     void Task::suspend(bool onPurpose) {

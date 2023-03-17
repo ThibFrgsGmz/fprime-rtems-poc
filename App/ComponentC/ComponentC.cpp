@@ -50,4 +50,13 @@ namespace App {
     // TODO
   }
 
+  void ComponentC ::
+    in_f32_2_handler(
+        const NATIVE_INT_TYPE portNum,
+        F32 val
+    )
+  {
+    // TODO
+  }
+
 } // end namespace App

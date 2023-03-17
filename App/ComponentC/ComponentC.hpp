@@ -51,6 +51,13 @@ namespace App {
           F32 val 
       );
 
+      //! Handler implementation for in_f32_2
+      //!
+      void in_f32_2_handler(
+          const NATIVE_INT_TYPE portNum, /*!< The port number*/
+          F32 val 
+      );
+
 
     };
 

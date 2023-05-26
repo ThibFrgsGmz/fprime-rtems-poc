@@ -13,7 +13,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE
     CACHE STRING "Try Static Lib Type" FORCE)
 
 # Adapt the path according to the developer setup, it seems that only absolute paths work
-set(TOOLCHAIN_PATH "/home/musubi/rcc-1.3.0-gcc" CACHE PATH "Toolchain path")
+set(TOOLCHAIN_PATH "/home/life/rcc-1.3.1-gcc" CACHE PATH "Toolchain path")
 
 # Check toolchain directory exists
 IF(NOT EXISTS "${TOOLCHAIN_PATH}")

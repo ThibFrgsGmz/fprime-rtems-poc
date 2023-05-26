@@ -39,3 +39,9 @@ set(MOD_DEPS
 )
 
 register_fprime_module(fprime-rtems_rtems)
+
+if (${CMAKE_SYSTEM_NAME} STREQUAL "RTEMS")
+    add_dependencies(Os fprime-rtems_rtems)
+    target_link_libraries(Os PRIVATE fprime-rtems_rtems)
+    target_link_libraries(fprime-rtems_rtems PRIVATE Os)
+endif()

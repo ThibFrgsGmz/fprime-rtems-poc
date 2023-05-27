@@ -47,7 +47,7 @@ namespace App {
         F32 val
     )
   {
-    //printf("Hello world Component 1 | input= %f\n", val);
+    printf("Hello world Component A | input= %f\n", val);
     this->out_f32_out(0, val);
   }
 

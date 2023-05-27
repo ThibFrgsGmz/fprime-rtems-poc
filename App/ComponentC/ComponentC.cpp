@@ -4,7 +4,6 @@
 // \brief  cpp file for ComponentC component implementation class
 // ======================================================================
 
-
 #include <App/ComponentC/ComponentC.hpp>
 #include <FpConfig.hpp>
 
@@ -47,7 +46,7 @@ namespace App {
         F32 val
     )
   {
-    // TODO
+    printf("Async Hello world Component C | input= %f\n", val);
   }
 
   void ComponentC ::
@@ -56,7 +55,7 @@ namespace App {
         F32 val
     )
   {
-    // TODO
+    printf("Sync Hello world Component C | input= %f\n", val);
   }
 
 } // end namespace App

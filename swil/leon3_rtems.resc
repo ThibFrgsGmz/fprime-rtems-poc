@@ -12,8 +12,11 @@ machine LoadPlatformDescription @platforms/boards/leon3.repl
 
 path add $ORIGIN
 
-$prom?="/home/musubi/codelab/fprime-rtems-poc/swil/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
-$bin?="/home/musubi/codelab/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
+:$prom?="/home/musubi/codelab/fprime-rtems-poc/swil/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
+:$bin?="/home/musubi/codelab/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
+
+$prom="/home/life/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
+$bin="/home/life/dev/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
 
 showAnalyzer sysbus.uart
 

@@ -19,6 +19,5 @@ list(APPEND SOURCE_FILES
     "${FPRIME_FRAMEWORK_PATH}/Os/FileCommon.cpp"
 )
 
-register_fprime_module(fprime-rtems_rtems)
-
-target_link_libraries(Os PRIVATE fprime-rtems_rtems)
+register_fprime_module(fprime_rtems)
+target_link_libraries(Os PRIVATE fprime_rtems)

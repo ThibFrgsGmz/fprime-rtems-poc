@@ -1,0 +1,2 @@
+CompileFlags:
+  CompilationDatabase: App/build-fprime-automatic-leon3-rtems5/       # Search build/ directory for compile_commands.json

@@ -1,5 +1,6 @@
 // File TaskId.cpp
 #include <rtems.h>
+#include "fprime-leon3/Types/PlatformTypes.hpp"
 #include <Os/TaskId.hpp>
 
 namespace Os

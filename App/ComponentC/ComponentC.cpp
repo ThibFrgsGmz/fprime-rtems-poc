@@ -1,11 +1,10 @@
 // ======================================================================
-// \title  ComponentB.cpp
-// \author sekirei
-// \brief  cpp file for ComponentB component implementation class
+// \title  ComponentC.cpp
+// \author musubi
+// \brief  cpp file for ComponentC component implementation class
 // ======================================================================
 
-#include <cstdio>
-#include <App/ComponentB/ComponentB.hpp>
+#include <App/ComponentC/ComponentC.hpp>
 #include <FpConfig.hpp>
 
 namespace App {
@@ -14,24 +13,25 @@ namespace App {
   // Construction, initialization, and destruction
   // ----------------------------------------------------------------------
 
-  ComponentB ::
-    ComponentB(
+  ComponentC ::
+    ComponentC(
         const char *const compName
-    ) : ComponentBComponentBase(compName)
+    ) : ComponentCComponentBase(compName)
   {
 
   }
 
-  void ComponentB ::
+  void ComponentC ::
     init(
+        const NATIVE_INT_TYPE queueDepth,
         const NATIVE_INT_TYPE instance
     )
   {
-    ComponentBComponentBase::init(instance);
+    ComponentCComponentBase::init(queueDepth, instance);
   }
 
-  ComponentB ::
-    ~ComponentB()
+  ComponentC ::
+    ~ComponentC()
   {
 
   }
@@ -40,14 +40,22 @@ namespace App {
   // Handler implementations for user-defined typed input ports
   // ----------------------------------------------------------------------
 
-  void ComponentB ::
+  void ComponentC ::
     in_f32_handler(
         const NATIVE_INT_TYPE portNum,
         F32 val
     )
   {
-    printf("Hello world Component B | input= %f\n", val);
-    this->out_f32_out(0, val);
+    printf("Async Hello world Component C | input= %f\n", val);
+  }
+
+  void ComponentC ::
+    in_f32_2_handler(
+        const NATIVE_INT_TYPE portNum,
+        F32 val
+    )
+  {
+    printf("Sync Hello world Component C | input= %f\n", val);
   }
 
 } // end namespace App

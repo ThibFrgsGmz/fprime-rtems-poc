@@ -1,12 +1,13 @@
 // File TaskId.cpp
 #include <rtems.h>
+#include "fprime-leon3/Types/PlatformTypes.hpp"
 #include <Os/TaskId.hpp>
 
 namespace Os
 {
     TaskId::TaskId(void)
     {
-        id = taskIdSelf();
+        id = rtems_task_self();
     }
     TaskId::~TaskId(void)
     {

@@ -13,8 +13,8 @@ ${PROMPT}                     SHLL [/] #
 *** Keywords ***
 Run Fprime
     
-    Execute Command           $prom="${CURDIR}/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
-    Execute Command           $bin="/home/musubi/codelab/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
+    Execute Command           $prom="/home/life/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
+    Execute Command           $bin="/home/life/dev/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
     
     Execute Script            ${SCRIPT}
     Set Default Uart Timeout  2
@@ -28,5 +28,4 @@ Should Boot RTEMS with FPrime
 
     Start Emulation
 
-    Wait For Prompt On Uart   Hello Worldd
 

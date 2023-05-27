@@ -1,25 +1,3 @@
-
-# set(MOD_DEPS
-#         "${CMAKE_THREAD_LIBS_INIT}"
-#         Fw/Cfg
-#         Fw/Types
-#         Fw/Logger
-#         Utils/Hash
-#         )
-
-# set(SOURCE_FILES
-#     "Event.cpp"
-#     "InterruptLock.cpp"
-#     "Log.cpp"
-#     "Mutex.cpp"
-#     "Queue.cpp"
-#     "Task.cpp"
-#     "TaskId.cpp"
-#     "TaskLock.cpp"
-#     "WatchdogTimerCommon.cpp"
-#     "${FPRIME_FRAMEWORK_PATH}/Os/Posix/IntervalTimer.cpp"
-#     )
-
 set(SOURCE_FILES
     "Mutex.cpp"
     "Queue.cpp"
@@ -27,18 +5,19 @@ set(SOURCE_FILES
     "TaskId.cpp"
     )
 
-if(CMAKE_SYSTEM_VERSION MATCHES 4.[789])
-#   list(APPEND SOURCE_FILES
-#         "4.x/Task.cpp"
-#         "4.x/WatchdogTimer.cpp"
-#       )
-    message(SYSTEM VERSION ==== > 4.x)
-elseif(CMAKE_SYSTEM_VERSION MATCHES 5.[0-9])
-#   list(APPEND SOURCE_FILES
-#         "5.x/Task.cpp"
-#         "4.x/WatchdogTimer.cpp"
-#       )
-    message(SYSTEM VERSION ==== > 5.x)
-endif()
+list(APPEND SOURCE_FILES
+    "${FPRIME_FRAMEWORK_PATH}/Os/IntervalTimerCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/TaskString.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/TaskCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/QueueCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/QueueString.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/IPCQueueCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/SimpleQueueRegistry.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/MemCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/ValidateFileCommon.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/ValidatedFile.cpp"
+    "${FPRIME_FRAMEWORK_PATH}/Os/FileCommon.cpp"
+)
 
-register_fprime_module()
+register_fprime_module(fprime_rtems)
+target_link_libraries(Os PRIVATE fprime_rtems)

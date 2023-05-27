@@ -1,5 +1,8 @@
 :name: Leon3 rtems demo
 :description: This script runs the rtems shell demo on Leon3
+: Run
+:renode -P 1234 --disable-xwt --console
+:include @swil/leon3_rtems.resc
 
 using sysbus
 $name?="Leon3"
@@ -9,8 +12,11 @@ machine LoadPlatformDescription @platforms/boards/leon3.repl
 
 path add $ORIGIN
 
-$prom?="/home/musubi/codelab/fprime-rtems-poc/swil/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
-$bin?="/home/musubi/codelab/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
+:$prom?="/home/musubi/codelab/fprime-rtems-poc/swil/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
+:$bin?="/home/musubi/codelab/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
+
+$prom="/home/life/grlib-gpl-2021.2-b4267/software/leon3/prom.bin"
+$bin="/home/life/dev/fprime-rtems-poc/App/build-artifacts/leon3-rtems5/bin/App"
 
 showAnalyzer sysbus.uart
 
@@ -23,3 +29,5 @@ macro reset
 """
 
 runMacro $reset
+
+:start

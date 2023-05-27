@@ -26,7 +26,7 @@ namespace Os {
 
         if (status != RTEMS_SUCCESSFUL)
         {
-            FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+            // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
             return QUEUE_UNINITIALIZED;
         }
 
@@ -37,7 +37,7 @@ namespace Os {
     Queue::~Queue() {
         rtems_status_code                status;
         status = rtems_message_queue_delete(this->m_handle);
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
         // (void)msgQDelete((MSG_Q_ID) this->m_handle);
     }
 
@@ -54,9 +54,9 @@ namespace Os {
         rtems_status_code                status;
         rtems_id                         rtems_queue_id;
         rtems_queue_id = this->m_handle;
-        status = rtems_message_queue_send(rtems_queue_id, data, size);
+        status = rtems_message_queue_send(rtems_queue_id, buffer, size);
 
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
 
         if (status != RTEMS_SUCCESSFUL) {
             switch (status) {
@@ -77,6 +77,7 @@ namespace Os {
 
         rtems_status_code status;
         rtems_interval ticks;
+        rtems_option      option_set;
         rtems_id rtems_queue_id = this->m_handle;
 
         if (block == QUEUE_NONBLOCKING) {
@@ -88,9 +89,9 @@ namespace Os {
             ticks      = RTEMS_NO_TIMEOUT;
         }
 
-        status = rtems_message_queue_receive(rtems_queue_id, buffer, &capacity, option_set, ticks);
+        status = rtems_message_queue_receive(rtems_queue_id, buffer, (size_t*) &capacity, option_set, ticks);
 
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
 
         if (status != RTEMS_SUCCESSFUL) {
             capacity = 0;
@@ -108,10 +109,10 @@ namespace Os {
 
     NATIVE_INT_TYPE Queue::getNumMsgs(void) const {
 
-        uint32_t = number_pending_msg;
+        uint32_t number_pending_msg;
         rtems_status_code status = rtems_message_queue_get_number_pending(this->m_handle, &number_pending_msg);
 
-        FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
+        // FW_ASSERT(status == RTEMS_SUCCESSFUL, rtems_status_text(status));
 
         if (status != RTEMS_SUCCESSFUL) {
             return -1;

@@ -1,8 +1,35 @@
 # fprime-rtems-poc
 F´ PoC on RTEMS LEON 3 w/ Renode
 
+# Install
 
-> **Note** With the help of https://github.com/antmicro/renode-rtems-leon3
+To make installation easier for the developer, each step of the installation is managed in a bash script.
+
+> Note: some scripts include the following `set -euo pipefail`, to make the script more robust:
+> - `-e` stops the script if a command fails.
+> - `-u` stops the script if an undefined variable is used.
+> - `-o` pipefail stops the script if a command in a pipeline fails.
+
+## Install the RTEMS LEON/ERC32 GNU cross-compiler system (RCC)
+
+This is the toolchain we will need to build our projet.
+
+```
+cd ~
+curl -LO https://www.gaisler.com/anonftp/rcc/bin/linux/sparc-rtems-5-gcc-10.2.0-1.3.1-linux.txz
+tar -Jxf sparc-rtems-5-gcc-10.2.0-1.3.1-linux.txz
+cd -
+```
+
+RCC supports real-time, multi-tasking C/C++ programs based on the RTEMS kernel. Compiling and linking are done in the same way as with host-based `gcc`.
+
+## Build PROM for LEON3
+
+
+Launch the following script 
+```
+./swil/build-prom.sh
+```
 
 # Documentation
 
@@ -79,3 +106,5 @@ $ telnet 127.0.0.1 1234
 Trying 127.0.0.1...
 telnet: Unable to connect to remote host: Connection refused
 ```
+
+> **Note** With the help of https://github.com/antmicro/renode-rtems-leon3
